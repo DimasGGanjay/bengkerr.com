@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+header {
+    background-color: #202020;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f44336;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+header .auth-buttons button {
+    background-color: transparent;
+    border: 1px solid #f44336;
+    color: #f44336;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #1a1a1a;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    color: #f44336;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.cta-button {
+    background-color: #f44336;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.services {
+    padding: 50px;
+    background-color: #2e2e2e;
+    text-align: center;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.service-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.service-card h3 {
+    color: #f44336;
+    margin-bottom: 10px;
+}
+
+.reviews, .review-form {
+    padding: 50px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.review-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.review-card {
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+footer {
+    background-color: #202020;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
