@@ -1,0 +1,41 @@
+/* Header.css */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-right: 3rem; /* Mengatur jarak antara logo dan menu navigasi */
+}
+
+.header nav ul {
+  display: flex;
+  gap: 3rem; /* Mengurangi jarak antar item navigasi */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.auth-buttons {
+  margin-left: auto; /* Menjaga tombol auth tetap di kanan */
+}
+
+.auth-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
