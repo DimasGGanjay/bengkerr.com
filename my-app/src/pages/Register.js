@@ -2,27 +2,39 @@ import React, { useState } from 'react';
 import '../styles/Login.css'; // Gunakan style yang sama
 
 const Register = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); // Menambahkan state untuk konfirmasi password
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Cek apakah password dan konfirmasi password cocok
+    // Check if password and confirm password match
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
-    // Tambahkan logika registrasi di sini (misalnya simpan ke database)
-    console.log('Register clicked', { email, password });
+    // Add registration logic here (e.g., save to database)
+    console.log('Register clicked', { username, email, phone, password });
   };
 
   return (
-    <div className="login-container"> {/* Menggunakan container yang sama dengan halaman Login */}
+    <div className="login-container"> {/* Using the same container as the Login page */}
       <div className="login-box">
-        <h2>Register</h2> {/* Ganti judul menjadi Register */}
+        <h2>Register</h2> {/* Title changed to Register */}
         <form onSubmit={handleRegister}>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -30,6 +42,16 @@ const Register = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">No. Telp</label>
+            <input
+              type="text"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
@@ -53,7 +75,7 @@ const Register = () => {
               required
             />
           </div>
-    
+
           <button type="submit" className="login-button">
             Register
           </button>

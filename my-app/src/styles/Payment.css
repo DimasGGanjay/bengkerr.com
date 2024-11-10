@@ -1,0 +1,43 @@
+/* Main container holding both sections */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  /* Each section (Scan QR and Pembayaran lain) */
+  .section {
+    width: 45%;
+    text-align: center;
+  }
+  
+  /* Box placeholder for QR code */
+  .qr-box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Center the QR box */
+    background-color: #333333; /* Dark background for QR box */
+  }
+  
+  /* Styles for payment options text */
+  .payment-options {
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  /* Section heading */
+  .section h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+  }
+  

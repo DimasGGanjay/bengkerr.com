@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 // import Services from './components/ServiceSection';
 import Services from './components/Services';
 import OrderPage from './pages/OrderPage';
+import Payment from './pages/Payment';
 // import HeroSection from './HeroSection'; // If used
 // import ServiceSection from './ServiceSection'; // If used
 // import ReviewSection from './ReviewSection'; // If used
@@ -25,6 +26,7 @@ function App() {
             <Route path="/pages/Register" element={<Register />} />
             <Route path="/pages/Services" element={<Services />} />
             <Route path="/pages/OrderPage" element={<OrderPage />} />
+            <Route path="/pages/Payment" element={<Payment />} />
           </Routes>
         </main>
         <Footer /> {/* Footer akan muncul di setiap halaman */}

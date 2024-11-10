@@ -40,7 +40,9 @@ function OrderPage() {
             <textarea placeholder="Masukkan Keluhan"></textarea>
           </div>
 
-          <button className="booking-button">Booking</button>
+          <a href="../pages/Payment">
+        <button className="booking-button">Order</button>
+        </a>
         </div>
       </div>
     </div>
