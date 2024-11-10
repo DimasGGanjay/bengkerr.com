@@ -4,7 +4,7 @@ import '../styles/Header.css';
 function Header() {
   return (
     <header className="header">
-      <h1>BENGKERR</h1>
+      <h1><a href='/'>BENGKERR</a></h1>
       <nav>
         <ul>
           <li><a href="#booking">Booking</a></li>
@@ -14,8 +14,8 @@ function Header() {
         </ul>
       </nav>
       <div className="auth-buttons">
-        <button>Sign in</button>
-        <button>Register</button>
+        <button><a href="../pages/Login">Sign in</a></button>
+        <button><a href="../pages/Register">Register</a></button>
       </div>
     </header>
   );

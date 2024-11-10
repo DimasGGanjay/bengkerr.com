@@ -12,6 +12,10 @@
     margin-right: 3rem; /* Mengatur jarak antara logo dan menu navigasi */
   }
   
+  .header h1 a {
+    color: inherit;        /* Menghilangkan warna biru dan menggunakan warna teks induk */
+    text-decoration: none;
+  }
   .header nav ul {
     display: flex;
     gap: 3rem; /* Mengurangi jarak antar item navigasi */
@@ -38,5 +42,11 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    
+  }
+
+  .auth-buttons a {
+    color: inherit;        /* Menghilangkan warna biru dan menggunakan warna teks induk */
+    text-decoration: none; /* Menghapus garis bawah pada link */
   }
   
