@@ -4,7 +4,7 @@ import HeroSection from './components/HeroSection';
 import ServiceSection from './components/ServiceSection';
 import ReviewSection from './components/ReviewSection';
 import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <ServiceSection />
       <ReviewSection />
       <ContactForm />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
