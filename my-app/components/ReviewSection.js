@@ -1,5 +1,5 @@
 import React from 'react';
-import './ReviewSection.css';
+import '../styles/ReviewSection.css';
 
 function ReviewSection() {
   return (
