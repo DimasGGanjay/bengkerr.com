@@ -7,15 +7,19 @@ function Header() {
       <h1><a href='/'>BENGKERR</a></h1>
       <nav>
         <ul>
-          <li><a href="#booking">Booking</a></li>
-          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="../pages/OrderPage">Booking</a></li>
+          <li><a href="../pages/Services">Layanan</a></li>
           <li><a href="#antrian">Informasi Antrian</a></li>
           <li><a href="#kontak">Kontak</a></li>
         </ul>
       </nav>
       <div className="auth-buttons">
-        <button><a href="../pages/Login">Sign in</a></button>
-        <button><a href="../pages/Register">Register</a></button>
+      <a href="../pages/Login">
+        <button className="order-button">Login</button>
+        </a>
+        <a href="../pages/Register">
+        <button className="order-button">Register</button>
+        </a>
       </div>
     </header>
   );

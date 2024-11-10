@@ -1,9 +1,9 @@
 import React from 'react';
 
 import HeroSection from '../components/HeroSection';
-import ServiceSection from '../components/ServiceSection';
 import ReviewSection from '../components/ReviewSection';
 import ContactForm from '../components/ContactForm';
+import Services from '../components/Services';
 
 // import '../styles/Home.css';
 
@@ -12,10 +12,13 @@ const Home = () => {
     <div className="home-container">
       {/* Hero Section */}
       <HeroSection />
-
-      {/* Service Section */}
-      <ServiceSection />
-
+    
+  {/* Service Section */}
+  <Services limit={4} />
+        <a href="../pages/Services">
+        <button className="order-button">Selengkapnya</button>
+        </a>   
+      
       {/* Review Section */}
       <ReviewSection />
 
