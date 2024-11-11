@@ -1,0 +1,74 @@
+/* QueuePage.css */
+
+.queue-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.queue-info {
+  margin-bottom: 20px;
+}
+
+.queue-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.date-time {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: #333;
+}
+
+.input-group input {
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Table styling */
+.queue-table-container {
+  margin-top: 20px;
+}
+
+.queue-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.queue-table th,
+.queue-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.queue-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.queue-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.queue-table tr:hover {
+  background-color: #e9e9e9;
+}
