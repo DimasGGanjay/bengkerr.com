@@ -14,7 +14,9 @@ import Kontak from './pages/Kontak';
 import AdminDashboard from './pages/Dashboard/AdminDashboard';
 import AdminManagement from './pages/Dashboard/AdminManagement';
 import AdminStatistics from './pages/Dashboard/AdminStatistics';
+import UserDashboard from './pages/Dashboard/UserDashboard';
 import UserChats from './pages/Dashboard/UserChats';
+import UserInvoice from './pages/Dashboard/UserInvoice';
 
 // import HeroSection from './HeroSection'; // If used
 // import ServiceSection from './ServiceSection'; // If used
@@ -39,7 +41,9 @@ function App() {
             <Route path="/pages/Dashboard/AdminDashboard" element={<AdminDashboard />} />
             <Route path="/pages/Dashboard/AdminManagement" element={<AdminManagement />} />
             <Route path="/pages/Dashboard/AdminStatistics" element={<AdminStatistics />} />
+            <Route path="/pages/Dashboard/UserDashboard" element={<UserDashboard />} />
             <Route path="/pages/Dashboard/UserChats" element={<UserChats />} />
+            <Route path="/pages/Dashboard/UserInvoice" element={<UserInvoice />} />
           </Routes>
         </main>
         <Footer /> {/* Footer akan muncul di setiap halaman */}

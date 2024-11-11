@@ -1,0 +1,51 @@
+/* General Styles */
+.invoice-user {
+    display: flex;
+    background-color: #121212;
+    color: #ffffff;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .sidebar-user {
+    width: 200px;
+    background-color: #1e1e1e;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Content area */
+  .invoice-list,
+  .invoice-history {
+    background-color: #333;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  /* Layout of invoice list and history */
+  .invoice-list {
+    flex: 1;
+    margin-right: 10px; /* Space between list and history sections */
+  }
+  
+  .invoice-history {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  /* Styling for individual items in each section */
+  .invoice-item, 
+  .history-item {
+    background-color: #444;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  

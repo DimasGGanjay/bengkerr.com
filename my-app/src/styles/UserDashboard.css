@@ -1,0 +1,58 @@
+/* Main container styles */
+.dashboard-user {
+    display: flex;
+    background-color: #121212;
+    color: #ffffff;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Main content area styling */
+  .dashboard-content {
+    display: grid;
+    grid-template-areas:
+      "queue-info notifications"
+      "history notifications";
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Queue info section */
+  .queue-info {
+    grid-area: queue-info;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  /* Notifications section */
+  .notifications {
+    grid-area: notifications;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  /* History section */
+  .history {
+    grid-area: history;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  /* Styling for individual items */
+  .queue-item,
+  .notification-item,
+  .history-item {
+    background-color: #444;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  

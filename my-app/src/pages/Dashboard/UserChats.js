@@ -1,6 +1,6 @@
 import React from 'react';
 import SidebarUser from '../../components/SidebarUser';
-import '../../styles/UserChats.css';
+import '../../styles/UserChat.css';
 
 const ChatUser = () => {
   return (
