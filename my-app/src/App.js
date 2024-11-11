@@ -11,6 +11,10 @@ import OrderPage from './pages/OrderPage';
 import Payment from './pages/Payment';
 import Antrian from './pages/Antrian';
 import Kontak from './pages/Kontak';
+import AdminDashboard from './pages/Dashboard/AdminDashboard';
+import AdminManagement from './pages/Dashboard/AdminManagement';
+import AdminStatistics from './pages/Dashboard/AdminStatistics';
+import UserChats from './pages/Dashboard/UserChats';
 
 // import HeroSection from './HeroSection'; // If used
 // import ServiceSection from './ServiceSection'; // If used
@@ -32,6 +36,10 @@ function App() {
             <Route path="/pages/Payment" element={<Payment />} />
             <Route path="/pages/Antrian" element={<Antrian />} />
             <Route path="/pages/Kontak" element={<Kontak />} />
+            <Route path="/pages/Dashboard/AdminDashboard" element={<AdminDashboard />} />
+            <Route path="/pages/Dashboard/AdminManagement" element={<AdminManagement />} />
+            <Route path="/pages/Dashboard/AdminStatistics" element={<AdminStatistics />} />
+            <Route path="/pages/Dashboard/UserChats" element={<UserChats />} />
           </Routes>
         </main>
         <Footer /> {/* Footer akan muncul di setiap halaman */}

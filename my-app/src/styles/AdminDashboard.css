@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app {
+    display: flex;
+  }
+  
+  .sidebar {
+    background-color: #1e1e1e;
+    padding: 20px;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar a, .sidebar button {
+    color: #ffffff;
+    text-decoration: none;
+    background: #333;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sidebar a:hover, .sidebar button:hover {
+    background-color: #444;
+  }
+  
+  .content {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .dashboard-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .dashboard-panel > div {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .chat-history, .notifications, .customer-list, .spare-parts, .mechanic-presence,
+  .monthly-income, .monthly-chart, .transaction-history {
+    grid-column: span 1;
+  }
+  
+  .chat-history, .monthly-income {
+    grid-column: span 2;
+  }
+  
+  .notifications, .transaction-history {
+    grid-column: span 1;
+  }
+  
+  .chat-item, .notification-item, .customer-item, .spare-part-item, .mechanic-item, .income-chart,
+  .chart-placeholder, .transaction-item {
+    background-color: #444;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  
