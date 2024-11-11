@@ -1,25 +1,25 @@
 /* Footer.css */
 .footer {
     text-align: center;
-    background-color: #333;
+    background-color: #202126;
     padding: 40px 20px;
   }
   
   .footer p {
     font-size: 1.5rem;
-    color: #ff0000;
+    color: #ffffff;
     margin: 10px 0;
   }
   
   .footer address {
     font-style: normal;
-    color: #aaa;
+    color: #ffffff;
     font-size: 1rem;
     margin: 10px 0;
   }
   
   .footer .social-links p {
-    color: #ff0000;
+    color: #ffffff;
     margin: 5px 0;
     font-size: 0.9rem;
   }

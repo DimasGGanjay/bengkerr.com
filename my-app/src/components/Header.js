@@ -15,10 +15,10 @@ function Header() {
       </nav>
       <div className="auth-buttons">
       <a href="\pages/Login">
-        <button className="order-button">Login</button>
+        <button className="order-button-log">Login</button>
         </a>
         <a href="\pages/Register">
-        <button className="order-button">Register</button>
+        <button className="order-button-log">Register</button>
         </a>
       </div>
     </header>

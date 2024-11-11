@@ -1,18 +1,17 @@
-// Services.js
+                                          // Services.js
 import React from 'react';
 import '../styles/Services.css';
 
 function ServiceCard({ title, price, image }) {
   return (
     <div className="service-card">
+      <div class="sergrad">
       <div className="service-title">{title}</div>
-      <div className="service-image">
-        <img src={image} alt={title} />
-      </div>
       <div className="service-price">{price}</div>
       <a href="../pages/OrderPage">
       <button className="order-button">ORDER</button>
       </a>
+      </div>
     </div>
   );
 }

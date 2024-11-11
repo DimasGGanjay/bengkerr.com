@@ -2,7 +2,7 @@
 .contact-form {
     text-align: center;
     padding: 40px 20px;
-    background-color: #222;
+    background-color: #202126;
     border-radius: 8px;
     margin: 20px auto;
     width: 80%;
@@ -23,7 +23,7 @@
   .contact-form input, 
   .contact-form textarea {
     padding: 10px;
-    background-color: #333;
+    background-color: #ffffff;
     border: none;
     border-radius: 5px;
     color: #fff;
