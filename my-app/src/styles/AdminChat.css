@@ -1,0 +1,33 @@
+/* App Container */
+.app {
+  display: flex;
+  height: 100vh; /* Mengatur tinggi agar halaman memenuhi layar */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px; /* Lebar sidebar */
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+}
+
+/* Content Area */
+.content {
+  margin-left: 250px; /* Memberikan ruang untuk sidebar */
+  padding: 20px;
+  flex: 1;
+  background-color: #f4f4f4;
+  height: 100vh; /* Memastikan konten memenuhi tinggi layar */
+  overflow-y: auto; /* Agar konten yang panjang bisa scroll */
+}
+
+/* Optional: Styles for Chat */
+.chat {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

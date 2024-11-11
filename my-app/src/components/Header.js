@@ -7,17 +7,17 @@ function Header() {
       <h1><a href='/'>BENGKERR</a></h1>
       <nav>
         <ul>
-          <li><a href="../pages/OrderPage">Booking</a></li>
-          <li><a href="../pages/Services">Layanan</a></li>
-          <li><a href="../pages/Antrian">Informasi Antrian</a></li>
-          <li><a href="../pages/Kontak">Tentang Kami</a></li>
+          <li><a href="\pages/OrderPage">Booking</a></li>
+          <li><a href="\pages/Services">Layanan</a></li>
+          <li><a href="\pages/Antrian">Informasi Antrian</a></li>
+          <li><a href="\pages/Kontak">Tentang Kami</a></li>
         </ul>
       </nav>
       <div className="auth-buttons">
-      <a href="../pages/Login">
+      <a href="\pages/Login">
         <button className="order-button">Login</button>
         </a>
-        <a href="../pages/Register">
+        <a href="\pages/Register">
         <button className="order-button">Register</button>
         </a>
       </div>
