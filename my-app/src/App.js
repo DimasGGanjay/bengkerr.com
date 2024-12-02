@@ -1,11 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importing the necessary routing components
-import Home from './pages/Home';  // Import the Home component
-import Login from './pages/Login';  // Import the Login component
-import Register from './pages/Register'; 
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Header from './components/Header';
 import Footer from './components/Footer';
-// import Services from './components/ServiceSection';
 import Services from './components/Services';
 import OrderPage from './pages/OrderPage';
 import Payment from './pages/Payment';
@@ -18,17 +17,26 @@ import UserDashboard from './pages/Dashboard/UserDashboard';
 import UserChats from './pages/Dashboard/UserChats';
 import UserInvoice from './pages/Dashboard/UserInvoice';
 
-// import HeroSection from './HeroSection'; // If used
-// import ServiceSection from './ServiceSection'; // If used
-// import ReviewSection from './ReviewSection'; // If used
-// import ContactForm from './ContactForm'; // If used
+function MainLayout({ children }) {
+  const location = useLocation();
+  console.log("Current Path:", location.pathname); 
+
+  const isDashboardPage = location.pathname.includes('/Dashboard');
+
+  return (
+    <>
+      {!isDashboardPage && <Header />}
+      <main>{children}</main>
+      {!isDashboardPage && <Footer />}
+    </>
+  );
+}
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Header /> {/* Header akan muncul di setiap halaman */}
-        <main>
+        <MainLayout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pages/Login" element={<Login />} />
@@ -45,8 +53,7 @@ function App() {
             <Route path="/pages/Dashboard/UserChats" element={<UserChats />} />
             <Route path="/pages/Dashboard/UserInvoice" element={<UserInvoice />} />
           </Routes>
-        </main>
-        <Footer /> {/* Footer akan muncul di setiap halaman */}
+        </MainLayout>
       </div>
     </Router>
   );
