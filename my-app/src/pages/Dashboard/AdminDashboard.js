@@ -1,21 +1,27 @@
 import React from 'react';
 import Sidebar from '../../components/Sidebar';
-import Chat from '../../components/Chat';
-// import Management from '../../components/Management';
-// import Statistics from '../../components/Statistics';
+import Chat from '../../components/ChatList';
+import Notifications from '../../components/Notification'; // Pastikan komponen ini ada
 import '../../styles/AdminDashboard.css';
 
-function App() {
+const AdminDashboard = () => {
   return (
     <div className="app">
       <Sidebar />
       <div className="content">
-        <Chat />
-        {/* <Management />
-        <Statistics /> */}
+        <div className="dashboard-panel">
+          <div className="chat-container">
+            <h2>Chat</h2>
+            <Chat />
+          </div>
+          <div className="notifications-container">
+            <h2>Notifikasi</h2>
+            <Notifications />
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default AdminDashboard;

@@ -3,7 +3,7 @@
     display: flex;
     background-color: #121212;
     color: #ffffff;
-    height: 100vh;
+    position: none;
     font-family: Arial, sans-serif;
   }
   
@@ -13,7 +13,6 @@
     grid-template-areas:
       "queue-info notifications"
       "history notifications";
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
     width: 100%;
     padding: 20px;

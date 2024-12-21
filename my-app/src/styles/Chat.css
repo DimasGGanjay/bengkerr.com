@@ -1,0 +1,94 @@
+/* Chat.css */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Mengatur tinggi penuh layar */
+    background-color: #1e1e1e;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative; /* Untuk positioning absolut di dalamnya */
+}
+
+.message {
+    margin: 5px 0; /* Jarak vertikal antara bubble */
+    padding: 8px 12px; /* Menambahkan padding untuk ruang di dalam bubble */
+    border-radius: 5px;
+    display: block; /* Mengubah menjadi block untuk menampilkan di baris baru */
+    position: relative; /* Untuk efek zig-zag */
+    word-wrap: break-word; /* Memungkinkan teks panjang untuk terputus */
+    max-width: 70%; /* Membatasi lebar bubble */
+}
+
+.message.user {
+    background-color: #ff0000; /* Warna untuk pesan pengguna */
+    align-self: flex-start; /* Pesan pengguna di sebelah kiri */
+    margin-right: auto; /* Menggeser bubble ke kiri */
+    text-align: left; /* Teks rata kiri */
+}
+
+.message.admin {
+    background-color: #444; /* Warna untuk pesan admin */
+    align-self: flex-end; /* Pesan admin di sebelah kanan */
+    margin-left: auto; /* Menggeser bubble ke kanan */
+    text-align: right; /* Teks rata kanan */
+}
+
+.message.admin {
+    background-color: #444; /* Warna untuk pesan admin */
+    align-self: flex-end; /* Pesan admin di sebelah kanan */
+    margin-left: auto; /* Menggeser bubble ke kanan */
+    text-align: right; /* Teks rata kanan */
+}
+
+/* Zig-zag effect */
+.message.user::after {
+    content: '';
+    position: absolute;
+    left: -10px; /* Menggeser ke kiri */
+    top: 10px; /* Posisi vertikal */
+    border-right: 12px solid #ff0000; /* Warna bubble pengguna */
+    border-top: 15px solid transparent; /* Membuat segitiga */
+}
+
+.message.admin::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Menggeser ke kanan */
+    top: 10px; /* Posisi vertikal */
+    border-left: 12px solid #444; /* Warna bubble admin */
+    border-top: 15px solid transparent; /* Membuat segitiga */
+}
+
+
+
+.input-container {
+
+    bottom: 10px; /* Jarak dari bawah */
+    left: 100px; /* Jarak dari kiri */
+    right: 100px; /* Jarak dari kanan */
+    display: flex;
+    position: fixed;
+    
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.input-container button {
+    padding: 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-container button:hover {
+    background-color: darkred;
+}

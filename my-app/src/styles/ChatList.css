@@ -1,0 +1,25 @@
+/* ChatList.css */
+.chat-list-container {
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.chat-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chat-item {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.chat-item:hover {
+    background-color: #333; /* Warna saat hover */
+}

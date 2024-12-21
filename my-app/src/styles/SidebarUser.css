@@ -1,0 +1,45 @@
+/* src/styles/SidebarUser .css */
+
+.sidebar-user2 {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #2b2b2b; /* Dark background color */
+    color: white; /* White text color */
+    padding: 20px; /* Padding inside the sidebar */
+    height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+.sidebar-user2 h2 {
+    font-size: 24px; /* Font size for the header */
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the header text */
+}
+
+.sidebar-user2 a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px; /* Padding for clickable area */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    margin-bottom: 10px; /* Space between links */
+}
+
+.sidebar-user2 a:hover {
+    background-color: #ff0000; /* Change background color on hover */
+}
+
+.sidebar-user2 button {
+    background-color: #ff0000; /* Red background for the button */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.sidebar-user2 button:hover {
+    background-color: darkred; /* Darker red on hover */
+}

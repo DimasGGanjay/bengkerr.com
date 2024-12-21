@@ -1,10 +1,10 @@
 /* General Styles */
 .invoice-user {
-    display: flex;
-    background-color: #121212;
-    color: #ffffff;
-    height: 100vh;
-    font-family: Arial, sans-serif;
+  display: flex;
+  background-color: #121212;
+  color: #ffffff;
+  position: none;
+  font-family: Arial, sans-serif;
   }
   
   .dashboard-container {

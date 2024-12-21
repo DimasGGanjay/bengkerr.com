@@ -2,11 +2,19 @@
 .footer {
     text-align: center;
     background-color: #202126;
-    padding: 40px 20px;
+    padding: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    justify-items: center;
+    background-color: #ff00009d;
+ 
+
   }
   
   .footer p {
     font-size: 1.5rem;
+    font-weight: 400;
     color: #ffffff;
     margin: 10px 0;
   }
@@ -19,6 +27,7 @@
   }
   
   .footer .social-links p {
+    text-align: left;
     color: #ffffff;
     margin: 5px 0;
     font-size: 0.9rem;
