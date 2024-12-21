@@ -25,13 +25,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <div className="login-container1">
+      <div className="login-box1">
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
         <form onSubmit={handleLogin}>
-          <div className="form-group">
+          <div className="form-group-login">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -41,7 +41,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-login">
             <label htmlFor="password">Password</label>
             <input
               type="password"

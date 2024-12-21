@@ -1,106 +1,136 @@
 /* General layout and styling */
 .order-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
-  }
-  
-  .order-container h1 {
-    text-align: center;
-    color: #666;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+  max-width: 900px; /* Maksimal lebar kontainer */
+  margin: 0 auto; /* Pusatkan kontainer */
+  padding: 20px; /* Padding di dalam kontainer */
+  font-family: Arial, sans-serif; /* Font yang digunakan */
+  color: #333; /* Warna teks */
+}
+
+.order-container h1 {
+  text-align: center; /* Pusatkan judul */
+  color: #d1d1d1; /* Warna judul form */
+  color: ; /* Warna judul */
+  font-size: 24px; /* Ukuran font judul */
+  margin-bottom: 20px; /* Jarak bawah judul */
+}
+
+.order-content {
+  display: flex; /* Gunakan flexbox untuk layout */
+  gap: 20px; /* Jarak antara elemen */
+  align-items: flex-start; /* Rata atas untuk elemen */
+}
+
+/* Left side - Image placeholder */
+.service-image-placeholder {
+  width: 50%; /* Lebar gambar */
+  height: 400px; /* Tinggi gambar */
+  border: 2px solid #aaa; /* Border gambar */
+  display: flex; /* Gunakan flexbox untuk pusatkan konten */
+  align-items: center; /* Pusatkan secara vertikal */
+  justify-content: center; /* Pusatkan secara horizontal */
+  font-size: 18px; /* Ukuran font untuk placeholder */
+  color: #aaa; /* Warna teks untuk placeholder */
+}
+
+/* Right side - Form */
+.booking-form1 {
+  width: 50%; /* Lebar form */
+  padding: 10px; /* Padding di dalam form */
+  text-align: start; /* Rata kiri untuk teks */
+}
+
+.booking-form1 h2 {
+  color: #d1d1d1; /* Warna judul form */
+  font-size: 20px; /* Ukuran font judul form */
+  margin-bottom: 15px; /* Jarak bawah judul form */
+}
+
+/* Form fields layout */
+.form-group {
+  display: grid; /* Gunakan flexbox untuk layout form */
+  gap: 10px; /* Jarak antara label dan input */
+  margin-bottom: 15px; /* Jarak bawah setiap grup */
+  align-items: flex-start; /* Rata atas untuk elemen */
+}
+
+.form-group label {
+  flex: 1; /* Lebar label */
+  font-weight: bold; /* Tebalkan font label */
+  color: #d1d1d1; /* Warna judul form */
+  color: ; /* Warna label */
+}
+.form-group2 {
+  display: flex; /* Gunakan flexbox untuk layout form */
+  gap: 30px; /* Jarak antara label dan input */
+  margin-bottom: 15px; /* Jarak bawah setiap grup */
+  align-items: center;
+  justify-content: flex-end;
+
+}
+
+.form-group2 label {
+  flex: 1; /* Lebar label */
+  font-weight: bold; /* Tebalkan font label */
+  color: #d1d1d1; /* Warna judul form */
+  color: ; /* Warna label */
+}
+
+
+.form-group input[type="text"],
+.form-group2 input[type="date"],
+.form-group2 input[type="time"],
+.form-group textarea {
+  flex: 2; /* Lebar input */
+  padding: 8px; /* Padding di dalam input */
+  border: 1px solid #ccc; /* Border input */
+  border-radius: 4px; /* Sudut membulat */
+  display: flex;
+}
+
+.form-group select {
+  flex: 2; /* Lebar dropdown */
+  padding: 8px; /* Padding di dalam dropdown */
+  border: 1px solid #ccc; /* Border dropdown */
+  border-radius: 4px; /* Sudut membulat */
+  background-color: #fff; /* Warna latar belakang dropdown */
+  color: #333; /* Warna teks dropdown */
+}
+
+/* Full width textarea */
+.form-group textarea {
+  width: 100%; /* Lebar penuh untuk textarea */
+  height: 60px; /* Tinggi textarea */
+  resize: none; /* Nonaktifkan resize */
+}
+
+/* Booking button */
+.booking-button {
+  width: 100%; /* Lebar penuh untuk tombol */
+  padding: 10px; /* Padding di dalam tombol */
+  background-color: #555; /* Warna latar belakang tombol */
+  color: white; /* Warna teks tombol */
+  border: none; /* Tanpa border */
+  border-radius: 5px; /* Sudut membulat */
+  cursor: pointer; /* Pointer saat hover */
+  font-weight: bold; /* Tebalkan font tombol */
+  font-size: 16px; /* Ukuran font tombol */
+  transition: background-color 0.3s; /* Transisi saat hover */
+}
+
+.booking-button:hover {
+  background-color: #333; /* Warna saat hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust layout for smaller screens */
   .order-content {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+      flex-direction: column; /* Ubah menjadi kolom pada layar kecil */
   }
-  
-  /* Left side - Image placeholder */
-  .service-image-placeholder {
-    width: 50%;
-    height: 400px;
-    border: 2px solid #aaa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: #aaa;
+
+  .service-image-placeholder,
+  .booking-form1 {
+      width: 100%; /* Lebar penuh pada layar kecil */
   }
-  
-  /* Right side - Form */
-  .booking-form {
-    width: 50%;
-    padding: 10px;
-  }
-  
-  .booking-form h2 {
-    color: #666;
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  /* Form fields layout */
-  .form-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    flex: 1;
-    font-weight: bold;
-    color: #666;
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="date"],
-  .form-group input[type="time"],
-  .form-group textarea {
-    flex: 2;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Full width textarea */
-  .form-group textarea {
-    width: 100%;
-    height: 100px;
-    resize: none;
-  }
-  
-  /* Booking button */
-  .booking-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  
-  .booking-button:hover {
-    background-color: #333;
-  }
-  
-  @media (max-width: 768px) {
-    /* Adjust layout for smaller screens */
-    .order-content {
-      flex-direction: column;
-    }
-  
-    .service-image-placeholder,
-    .booking-form {
-      width: 100%;
-    }
-  }
+}

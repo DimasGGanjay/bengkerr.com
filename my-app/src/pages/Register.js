@@ -31,13 +31,13 @@ const Register = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <div className="register-container">
+      <div className="register-box">
         <h2>Register</h2>
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
         <form onSubmit={handleRegister}>
-          <div className="form-group">
+          <div className="form-group-register">
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -47,7 +47,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-register">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -57,7 +57,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-register">
             <label htmlFor="phone">No. Telp</label>
             <input
               type="text"
@@ -67,7 +67,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-register">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -77,7 +77,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-register">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
@@ -87,10 +87,10 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="checkbox-register">
             <label>
               <input type="checkbox" required />
-              I agree to the terms and conditions
+               agree to the terms and conditions
             </label>
           </div>
           <button type="submit" className="login-button">

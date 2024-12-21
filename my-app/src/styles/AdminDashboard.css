@@ -37,7 +37,12 @@ body {
 }
 
 /* Styling untuk Chat dan Notifikasi */
-.chat-container, .notifications-container {
+.chatlist-container {
+  display: grid;
+  flex-direction: column;
+  align-content: flex-start;
+}
+.notifications-container {
   display: flex;
   flex-direction: column;
 }

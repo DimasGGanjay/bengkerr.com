@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../../components/Sidebar';
-import Chat from '../../components/ChatList';
+import ChatList from '../../components/ChatList';
 import Notifications from '../../components/Notification'; // Pastikan komponen ini ada
 import '../../styles/AdminDashboard.css';
 
@@ -10,9 +10,9 @@ const AdminDashboard = () => {
       <Sidebar />
       <div className="content">
         <div className="dashboard-panel">
-          <div className="chat-container">
+          <div className="chatlist-container">
             <h2>Chat</h2>
-            <Chat />
+            <ChatList />
           </div>
           <div className="notifications-container">
             <h2>Notifikasi</h2>
