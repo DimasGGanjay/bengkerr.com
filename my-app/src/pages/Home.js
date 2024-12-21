@@ -15,9 +15,11 @@ const Home = () => {
     
   {/* Service Section */}
   <Services limit={4} />
-        <a href="../pages/Services">
+  <div className='hero-button'>
+     <a href="../pages/Services">
         <button className="order-button-log">Selengkapnya</button>
         </a>   
+     </div>
       
       {/* Review Section */}
       <ReviewSection />

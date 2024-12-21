@@ -2,14 +2,17 @@
 .header {
     display: flex;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 7rem;
     background-color: #202126;
   }
+
   
   .header h1 {
     font-size: 2rem;
+    display: flex;
+    align-content: center;
     position: relative;
-    top: 10px;
+   
     color: #ff0000;
     margin-right: 3rem; /* Mengatur jarak antara logo dan menu navigasi */
   }
@@ -22,15 +25,29 @@
     display: flex;
     gap: 3rem; /* Mengurangi jarak antar item navigasi */
     list-style: none;
-    padding: 0;
+    padding: 100;
     margin: 0;
-  }
   
+  }
+
+
   .header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 1rem;
+    padding: 7px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.6s;
+    border-radius: 5px; 
   }
+
+  .header nav ul li a:hover {
+    background-color: #ff0000; 
+    
+   
+}
+
+  
   .order-button-log {
     background-color: red;
     color: white;
@@ -55,6 +72,8 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s;
     
   }
 
@@ -62,4 +81,8 @@
     color: inherit;        /* Menghilangkan warna biru dan menggunakan warna teks induk */
     text-decoration: none; /* Menghapus garis bawah pada link */
   }
-  
+
+
+.auth-buttons button:hover {
+    background-color: darkred; /* Darker red on hover */
+}

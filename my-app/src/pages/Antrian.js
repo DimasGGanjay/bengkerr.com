@@ -3,38 +3,36 @@ import '../styles/Antrian.css';
 
 const QueuePage = () => {
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
 
   const queueList = [
     { queueNumber: 1, paymentId: '0987654321', time: '09:00' },
     { queueNumber: 2, paymentId: '0987654322', time: '09:30' },
     { queueNumber: 3, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 4, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 5, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 7, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 8, paymentId: '0987654323', time: '10:00' },
     // Add more items as needed
   ];
 
   return (
-    <div className="queue-container">
-      <div className="queue-info">
+    <div className='container-antrian'>
+      <div className="queue-container">
+      <div className="queue-info-antrian">
         <h2>Informasi Antrian</h2>
         <div className="date-time">
           <div className="input-group">
-            <label htmlFor="date">Tanggal</label>
-            <input
+          <label htmlFor="date">Tanggal</label>
+          <div>
+          <input
               type="date"
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-          <div className="input-group">
-            <label htmlFor="time">Waktu</label>
-            <input
-              type="time"
-              id="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
           </div>
+    
         </div>
       </div>
 
@@ -43,7 +41,7 @@ const QueuePage = () => {
           <thead>
             <tr>
               <th>Nomor Antrian</th>
-              <th>ID Pembayaran</th>
+              <th>Plat Nomor</th>
               <th>Jam</th>
             </tr>
           </thead>
@@ -58,6 +56,7 @@ const QueuePage = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

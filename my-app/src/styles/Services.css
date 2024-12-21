@@ -17,9 +17,9 @@ body {
 }
 
 /* Heading styling */
-h1 {
-  color: #ccc;
-  margin-bottom: 20px;
+.services-container h1 {
+  color: #e0e0e0;
+  margin-bottom: 40px;
 }
 
 /* Grid layout for service cards */

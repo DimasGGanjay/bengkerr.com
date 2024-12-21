@@ -5,6 +5,7 @@
   padding: 20px; /* Padding di dalam kontainer */
   font-family: Arial, sans-serif; /* Font yang digunakan */
   color: #333; /* Warna teks */
+  
 }
 
 .order-container h1 {
@@ -18,7 +19,7 @@
 .order-content {
   display: flex; /* Gunakan flexbox untuk layout */
   gap: 20px; /* Jarak antara elemen */
-  align-items: flex-start; /* Rata atas untuk elemen */
+  align-items: center; /* Rata atas untuk elemen */
 }
 
 /* Left side - Image placeholder */
@@ -108,7 +109,7 @@
 .booking-button {
   width: 100%; /* Lebar penuh untuk tombol */
   padding: 10px; /* Padding di dalam tombol */
-  background-color: #555; /* Warna latar belakang tombol */
+  background-color:#ff0000; /* Warna latar belakang tombol */
   color: white; /* Warna teks tombol */
   border: none; /* Tanpa border */
   border-radius: 5px; /* Sudut membulat */
@@ -119,7 +120,7 @@
 }
 
 .booking-button:hover {
-  background-color: #333; /* Warna saat hover */
+  background-color: darkred; /* Warna saat hover */
 }
 
 /* Responsive Design */
