@@ -18,9 +18,8 @@ import UserChats from './pages/Dashboard/UserChats';
 import UserInvoice from './pages/Dashboard/UserInvoice';
 import ChatList from './components/ChatList'; // Import ChatList
 import Chat from './components/Chat'; // Import Chat
-import UserChat from './components/ChatUser'; // Import Chat
-
-
+import UserChat from './components/ChatUser';
+import OwnerDashboard from './pages/Dashboard/OwnerDashboard';
 
 function MainLayout({ children }) {
   const location = useLocation();
@@ -60,6 +59,7 @@ function App() {
             <Route path="/pages/Dashboard/UserChats/chatlist" element={<ChatList />} /> {/* Rute untuk ChatList */}
             <Route path="/pages/Dashboard/UserChats/chatlist/chat/:userId" element={<Chat />} /> {/* Rute untuk Chat */}
             <Route path="/pages/Dashboard/UserChats/UserChat" element={<UserChat />} /> {/* Rute untuk Chat */}
+            <Route path="/pages/Dashboard/OwnerDashboard" element={<OwnerDashboard />} /> {/* Rute untuk Chat */}
           </Routes>
         </MainLayout>
       </div>
