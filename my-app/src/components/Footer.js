@@ -4,8 +4,8 @@ import '../styles/Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-    
-     <div>
+    <div className='atas'>
+      <div> 
      <p>BENGKERR</p>
      </div> 
      <div>
@@ -18,6 +18,10 @@ function Footer() {
         <p>Instameter @Bengkerr</p>
         <p>Facelift bengkerr</p>
         <p>Twiwir/K @Bengkerr</p>
+      </div>
+    </div>
+      <div className='bawah'>
+        <p>2024 BENGKERR. Made with Love in Indonesia.</p>
       </div>
     </footer>
   );

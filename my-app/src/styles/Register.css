@@ -12,6 +12,8 @@ body {
     align-items: start;
     margin: 20px;
     height: fit-content;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
   }
   
   .register-box {

@@ -4,6 +4,11 @@
     align-items: center;
     padding: 1rem 7rem;
     background-color: #202126;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0%;
   }
 
   

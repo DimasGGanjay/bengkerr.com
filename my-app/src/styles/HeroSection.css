@@ -23,8 +23,7 @@
   .hero-content {
     display: flex;
     max-width: 40%;
-    padding-left: 5rem;
-    z-index: 1; /* Agar konten berada di depan background */
+    padding-left: 5rem; /* Agar konten berada di depan background */
     flex-wrap: wrap;
     justify-content: center;
   }

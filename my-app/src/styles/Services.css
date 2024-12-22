@@ -11,6 +11,7 @@ body {
 /* Container for all service cards */
 .services-container {
   padding: 20px;
+  padding-top: 6rem;
   max-width: 800px; /* Set a wider max-width for centered display */
   margin: 0 auto; /* Center the container */
   text-align: center;

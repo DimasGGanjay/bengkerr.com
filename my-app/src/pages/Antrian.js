@@ -12,6 +12,10 @@ const QueuePage = () => {
     { queueNumber: 5, paymentId: '0987654323', time: '10:00' },
     { queueNumber: 7, paymentId: '0987654323', time: '10:00' },
     { queueNumber: 8, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 9, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 10, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 11, paymentId: '0987654323', time: '10:00' },
+    { queueNumber: 12, paymentId: '0987654323', time: '10:00' },
     // Add more items as needed
   ];
 

@@ -1,7 +1,9 @@
 /* QueuePage.css */
 
 .container-antrian{
-  height: 80vh;
+  padding-top: 6rem;
+  height: fit-content;
+  margin-bottom: 3rem;
 }
 .queue-container {
   width: 80%;

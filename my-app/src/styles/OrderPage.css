@@ -5,7 +5,8 @@
   padding: 20px; /* Padding di dalam kontainer */
   font-family: Arial, sans-serif; /* Font yang digunakan */
   color: #333; /* Warna teks */
-  height: 80vh;
+  height: 85vh;
+  padding-top: 6rem;
 }
 
 .order-container h1 {

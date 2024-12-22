@@ -2,34 +2,45 @@
 .footer {
     text-align: center;
     background-color: #202126;
-    padding: 30px;
+    align-content: center;
+    background-color: #ff00009d;
+  }
+  .atas {
+    text-align: center;
     display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
     align-content: center;
     justify-content: space-evenly;
     justify-items: center;
-    background-color: #ff00009d;
- 
-
   }
-  
-  .footer p {
+
+  .atas p {
     font-size: 1.5rem;
     font-weight: 400;
     color: #ffffff;
     margin: 10px 0;
   }
   
-  .footer address {
+  .atas address {
     font-style: normal;
     color: #ffffff;
     font-size: 1rem;
     margin: 10px 0;
   }
   
-  .footer .social-links p {
+  .atas .social-links p {
     text-align: left;
     color: #ffffff;
     margin: 5px 0;
     font-size: 0.9rem;
   }
   
+  .bawah{
+    border-top: 1px solid #ffffff;
+  }
+
+  .bawah p {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
