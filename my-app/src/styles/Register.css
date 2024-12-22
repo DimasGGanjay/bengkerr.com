@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: start;
     margin: 20px;
-    height: fit-content;
+    height: 80vh;
   }
   
   .register-box {
@@ -27,6 +27,10 @@ body {
   .register-box h2 {
     color: #ff0000;
     margin-bottom: 1.5rem;
+  }
+
+  .register-box p {
+    padding-top: 1rem;
   }
   
   .form-group-register {
