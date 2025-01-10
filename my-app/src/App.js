@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -21,29 +21,36 @@ import Chat from './components/Chat'; // Import Chat
 import UserChat from './components/ChatUser';
 import OwnerDashboard from './pages/Dashboard/OwnerDashboard';
 
-function MainLayout({ children }) {
+function MainLayout({ children, isAuthenticated }) {
   const location = useLocation();
-  console.log("Current Path:", location.pathname); 
 
   const isDashboardPage = location.pathname.includes('/Dashboard');
+  const isUserDashboard = location.pathname === '/pages/Dashboard/UserDashboard';
 
   return (
     <>
-      {!isDashboardPage && <Header />}
+      {(!isDashboardPage || isUserDashboard) && <Header />}
       <main>{children}</main>
-      {!isDashboardPage && <Footer />}
+      {(!isDashboardPage || isUserDashboard) && <Footer />}
     </>
   );
 }
 
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
   return (
     <Router>
       <div className="App">
-        <MainLayout>
+        <MainLayout isAuthenticated={isAuthenticated}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/pages/Login" element={<Login />} />
+            <Route path="/pages/Login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
             <Route path="/pages/Register" element={<Register />} />
             <Route path="/pages/Services" element={<Services />} />
             <Route path="/pages/OrderPage" element={<OrderPage />} />
@@ -56,10 +63,10 @@ function App() {
             <Route path="/pages/Dashboard/UserDashboard" element={<UserDashboard />} />
             <Route path="/pages/Dashboard/UserChats" element={<UserChats />} />
             <Route path="/pages/Dashboard/UserInvoice" element={<UserInvoice />} />
-            <Route path="/pages/Dashboard/UserChats/chatlist" element={<ChatList />} /> {/* Rute untuk ChatList */}
-            <Route path="/pages/Dashboard/UserChats/chatlist/chat/:userId" element={<Chat />} /> {/* Rute untuk Chat */}
-            <Route path="/pages/Dashboard/UserChats/UserChat" element={<UserChat />} /> {/* Rute untuk Chat */}
-            <Route path="/pages/Dashboard/OwnerDashboard" element={<OwnerDashboard />} /> {/* Rute untuk Chat */}
+            <Route path="/pages/Dashboard/UserChats/chatlist" element={<ChatList />} />
+            <Route path="/pages/Dashboard/UserChats/chatlist/chat/:userId" element={<Chat />} />
+            <Route path="/pages/Dashboard/UserChats/UserChat" element={<UserChat />} />
+            <Route path="/pages/Dashboard/OwnerDashboard" element={<OwnerDashboard />} />
           </Routes>
         </MainLayout>
       </div>

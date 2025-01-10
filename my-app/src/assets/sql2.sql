@@ -1,4 +1,7 @@
--- Tabel untuk menyimpan informasi pengguna
+
+CREATE DATABASE bengkerr;
+USE bengkerr;
+
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -9,7 +12,6 @@ CREATE TABLE Users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabel untuk menyimpan informasi layanan
 CREATE TABLE Services (
     service_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -18,7 +20,6 @@ CREATE TABLE Services (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabel untuk menyimpan informasi pemesanan
 CREATE TABLE Orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
@@ -29,7 +30,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (service_id) REFERENCES Services(service_id)
 );
 
--- Tabel untuk menyimpan informasi pembayaran
 CREATE TABLE Payments (
     payment_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
@@ -39,7 +39,6 @@ CREATE TABLE Payments (
     FOREIGN KEY (order_id) REFERENCES Orders(order_id)
 );
 
--- Tabel untuk menyimpan informasi invoice
 CREATE TABLE Invoices (
     invoice_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
@@ -49,7 +48,6 @@ CREATE TABLE Invoices (
     FOREIGN KEY (order_id) REFERENCES Orders(order_id)
 );
 
--- Tabel untuk menyimpan informasi chat
 CREATE TABLE Chats (
     chat_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
