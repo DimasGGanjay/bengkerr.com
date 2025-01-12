@@ -11,6 +11,10 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
 }
 
+.sidebar-user2 p {
+    margin-bottom: 40px;
+}
+
 .sidebar-user2 h2 {
     font-size: 24px; /* Font size for the header */
     margin-bottom: 20px; /* Space below the header */

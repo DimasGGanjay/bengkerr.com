@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -38,6 +38,14 @@ function MainLayout({ children, isAuthenticated }) {
 
 
 function App() {
+  // Cek status login saat aplikasi dimuat
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    // if (!token) {
+    //   // Redirect ke halaman login jika tidak ada token
+    //   window.location.href = '/pages/Login';
+    // }
+  }, []);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLoginSuccess = () => {

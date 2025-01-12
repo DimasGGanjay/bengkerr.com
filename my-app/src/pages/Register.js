@@ -25,6 +25,12 @@ const Register = () => {
             return;
         }
 
+        const confirmRegister = window.confirm(`Apakah Anda yakin ingin mendaftar dengan\nnama : ${username}\nemail : ${email}\nnomor telepon : ${phone}\npassword : ${password}. \n\nJika anda yakin silahkan tekan OK dan masukkan kembali email dan password anda di halaman login?`);
+        if (!confirmRegister) {
+       
+            return;
+        }
+
         try {
             const response = await fetch('http://localhost:5000/api/register', {
                 method: 'POST',
@@ -37,6 +43,9 @@ const Register = () => {
             const data = await response.json();
             if (response.ok) {
                 setSuccess(data.message);
+                setTimeout(() => {
+                    window.location.href = '/pages/Login'; // Redirect ke halaman login setelah pendaftaran berhasil
+                }, 2000); // Tunggu 2 detik sebelum redirect
             } else {
                 setError(data.message || 'Registration failed');
             }

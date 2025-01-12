@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt'); // Ensure bcrypt is installed
+const jwt = require('jsonwebtoken'); // Ensure jsonwebtoken is installed
 
 const registerUser = (req, res) => {
     const { username, email, phone, password } = req.body;
@@ -36,8 +37,10 @@ const loginUser = (req, res) => {
             if (err || !isMatch) {
                 return res.status(401).json({ message: 'Invalid email or password' });
             }
-            // Include user role in the response
-            res.status(200).json({ message: 'Login successful', userId: user.user_id, role: user.role });
+            // Generate JWT token
+            const token = jwt.sign({ userId: user.user_id, role: user.role }, 'your-secret-key', { expiresIn: '1h' });
+            // Include token, username, and user role in the response
+            res.status(200).json({ message: 'Login successful', token, userId: user.user_id, username: user.username, role: user.role });
         });
     });
 };

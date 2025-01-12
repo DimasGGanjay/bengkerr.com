@@ -30,7 +30,9 @@ const Login = ({ onLoginSuccess }) => {
           const data = await response.json();
           if (response.ok) {
               setSuccess(data.message);
-              // Redirect based on user role
+              // Simpan token dan informasi pengguna di localStorage
+              localStorage.setItem('token', data.token); // Simpan token
+              localStorage.setItem('user', JSON.stringify({ userId: data.userId, username: data.username, role: data.role })); // Simpan informasi pengguna
               if (data.role === 'admin') {
                   window.location.href = './Dashboard/AdminDashboard'; // Adjust the path as needed
               } else if (data.role === 'user') {
