@@ -12,4 +12,6 @@ app.use('/api', userRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
+
 });

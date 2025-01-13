@@ -18,7 +18,8 @@ function Header() {
   const handleLogout = () => {
     const confirmLogout = window.confirm('Apakah Anda yakin ingin logout?');
     if (confirmLogout) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('token'); // Hapus token
+      localStorage.removeItem('user'); // Hapus informasi pengguna
       setIsLoggedIn(false);
       window.location.href = '/';
     }

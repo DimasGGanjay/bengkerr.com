@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/OrderPage.css'; // Ensure this CSS file is created
 
 function OrderPage() {
+  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    if (userData) {
+      setUsername(userData.username); // Ambil username dari localStorage
+      setPhone(userData.phone); // Ambil nomor telepon dari localStorage
+    }
+  }, []);
+
   return (
     <div className="order-container">
       <h1>Form Booking Service</h1>
@@ -15,9 +26,9 @@ function OrderPage() {
         <div className="booking-form1">
           <div className="form-group">
             <label>Nama</label>
-            <input type="text" placeholder="Masukkan Nama" />
+            <input type="text" placeholder="Masukkan Nama" value={username} readOnly />
             <label>No Telp</label>
-            <input type="text" placeholder="Masukkan No Telp" />
+            <input type="text" placeholder="Masukkan No Telp" value={phone} readOnly />
           </div>
 
           <div className="form-group2">

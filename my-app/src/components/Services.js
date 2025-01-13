@@ -16,35 +16,23 @@ function ServiceCard({ title, price, image }) {
   );
 }
 
-function Services({ limit }) {
-  const serviceData = [
-    { title: "Service Rutin", price: "Rp129.000", image: "/service1.png" },
-    { title: "Tune Up", price: "Rp129.000", image: "/service2.png" },
-    { title: "Bore Up", price: "Rp129.000", image: "/service3.png" },
-    { title: "Over Haul", price: "Rp129.000", image: "/service4.png" },
-    { title: "Special Service", price: "Rp149.000", image: "/service5.png" },
-    { title: "Full Check", price: "Rp159.000", image: "/service6.png" },
-    { title: "Service Rutin", price: "Rp129.000", image: "/service1.png" },
-    { title: "Tune Up", price: "Rp129.000", image: "/service2.png" },
-    { title: "Bore Up", price: "Rp129.000", image: "/service3.png" },
-    { title: "Over Haul", price: "Rp129.000", image: "/service4.png" },
-    { title: "Special Service", price: "Rp149.000", image: "/service5.png" },
-    { title: "Full Check", price: "Rp159.000", image: "/service6.png" },
-    // Add more services if needed
-  ];
-
+function Services({ serviceData }) {
   return (
     <div className="services-container">
       <h1>Layanan</h1>
       <div className="service-cards">
-        {serviceData.slice(0, limit).map((service, index) => (
-          <ServiceCard
-            key={index}
-            title={service.title}
-            price={service.price}
-            image={service.image}
-          />
-        ))}
+        {serviceData && serviceData.length > 0 ? (
+          serviceData.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              price={service.price}
+              image={service.image}
+            />
+          ))
+        ) : (
+          <p>Loading services...</p>
+        )}
       </div>
     </div>
   );
