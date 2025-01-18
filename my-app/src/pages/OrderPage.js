@@ -25,6 +25,12 @@ function OrderPage() {
         {/* Form section */}
         <div className="booking-form1">
           <div className="form-group">
+          <label>Pilih Layanan</label>
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
             <label>Nama</label>
             <input type="text" placeholder="Masukkan Nama" value={username} readOnly />
             <label>No Telp</label>

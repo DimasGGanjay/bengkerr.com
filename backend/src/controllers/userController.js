@@ -48,20 +48,54 @@ const loginUser = (req, res) => {
 
 const getServices = (req, res) => {
     const sql = 'SELECT title, price, image FROM services'; // Correct query
+    console.log('Fetching services data...'); // Added console log for debugging
+
     db.query(sql, (err, results) => {
         if (err) {
             return res.status(500).json({ message: 'Error fetching services', error: err });
         }
 
+        // Log the raw results for debugging
+        console.log('Fetched services data:', results);
+
         // Format results
         const formattedResults = results.map(service => ({
             title: service.title || 'Unknown Title',
             price: service.price || 0,
-            image: service.image || null, // Default null jika gambar kosong
+            image: service.image || null, // Directly use the image path
         }));
 
+        console.log('Formatted results:', formattedResults); // Log the formatted results for debugging
         res.status(200).json(formattedResults); // Return results as JSON
     });
 };
+
+// const getServices = (req, res) => {
+//     // Dummy data sebagai pengganti hasil query database
+//     const dummyData = [
+//         {
+//             title: 'Haircut',
+//             price: 50000,
+//             image: 'https://example.com/images/haircut.jpg',
+//         },
+//         {
+//             title: 'Hair Wash',
+//             price: 20000,
+//             image: 'https://example.com/images/hairwash.jpg',
+//         },
+//         {
+//             title: 'Beard Trim',
+//             price: 30000,
+//             image: 'https://example.com/images/beardtrim.jpg',
+//         },
+//     ];
+
+//     // Log data dummy untuk debugging
+//     console.log('Sending dummy data:', dummyData);
+
+//     // Kirim data dummy sebagai respons JSON
+//     res.status(200).json(dummyData);
+// };
+
 
 module.exports = { registerUser, loginUser, getServices }; // Ensure all functions are exported

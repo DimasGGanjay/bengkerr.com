@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Services from './components/Services';
+import ServicesPage from './components/Services';
 import OrderPage from './pages/OrderPage';
 import Payment from './pages/Payment';
 import Antrian from './pages/Antrian';
@@ -60,7 +60,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pages/Login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
             <Route path="/pages/Register" element={<Register />} />
-            <Route path="/pages/Services" element={<Services />} />
+            <Route path="/pages/Services" element={<ServicesPage />} />
             <Route path="/pages/OrderPage" element={<OrderPage />} />
             <Route path="/pages/Payment" element={<Payment />} />
             <Route path="/pages/Antrian" element={<Antrian />} />
