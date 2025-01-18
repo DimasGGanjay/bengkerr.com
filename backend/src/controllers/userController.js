@@ -70,32 +70,18 @@ const getServices = (req, res) => {
     });
 };
 
-// const getServices = (req, res) => {
-//     // Dummy data sebagai pengganti hasil query database
-//     const dummyData = [
-//         {
-//             title: 'Haircut',
-//             price: 50000,
-//             image: 'https://example.com/images/haircut.jpg',
-//         },
-//         {
-//             title: 'Hair Wash',
-//             price: 20000,
-//             image: 'https://example.com/images/hairwash.jpg',
-//         },
-//         {
-//             title: 'Beard Trim',
-//             price: 30000,
-//             image: 'https://example.com/images/beardtrim.jpg',
-//         },
-//     ];
+const getOrders = (req, res) => {
+    const sql = 'SELECT queue_number, plate_number, order_date FROM orders'; // Query to fetch required fields
+    console.log('Fetching orders data...');
 
-//     // Log data dummy untuk debugging
-//     console.log('Sending dummy data:', dummyData);
+    db.query(sql, (err, results) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error fetching orders', error: err });
+        }
 
-//     // Kirim data dummy sebagai respons JSON
-//     res.status(200).json(dummyData);
-// };
+        console.log('Fetched orders data:', results);
+        res.status(200).json(results); // Return results as JSON
+    });
+};
 
-
-module.exports = { registerUser, loginUser, getServices }; // Ensure all functions are exported
+module.exports = { registerUser, loginUser, getServices, getOrders }; // Ensure all functions are exported
