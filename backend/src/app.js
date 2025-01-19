@@ -25,6 +25,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/api', userRoutes);
+app.use('/api/orders', orderRoutes); 
 
 // Start server
 const PORT = process.env.PORT || 3000;

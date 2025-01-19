@@ -16,6 +16,7 @@ app.use(authMiddleware);
 
 // Route
 app.use('/api', userRoutes);
+app.use('/api/orders', userRoutes);
 
 // Start server
 app.listen(PORT, () => {

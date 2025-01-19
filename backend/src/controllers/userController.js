@@ -47,25 +47,26 @@ const loginUser = (req, res) => {
 };
 
 const getServices = (req, res) => {
-    const sql = 'SELECT title, price, image FROM services'; // Correct query
-    console.log('Fetching services data...'); // Added console log for debugging
+    const sql = 'SELECT service_id, title, price, duration, image FROM services'; // Tambahkan service_id
+    console.log('Fetching services data...');
 
     db.query(sql, (err, results) => {
         if (err) {
             return res.status(500).json({ message: 'Error fetching services', error: err });
         }
 
-        // Log the raw results for debugging
         console.log('Fetched services data:', results);
 
         // Format results
         const formattedResults = results.map(service => ({
+            service_id: service.service_id, // Pastikan service_id ada di sini
             title: service.title || 'Unknown Title',
             price: service.price || 0,
+            duration: service.duration || 0,
             image: service.image || null, // Directly use the image path
         }));
 
-        console.log('Formatted results:', formattedResults); // Log the formatted results for debugging
+        console.log('Formatted results:', formattedResults);
         res.status(200).json(formattedResults); // Return results as JSON
     });
 };
@@ -84,4 +85,42 @@ const getOrders = (req, res) => {
     });
 };
 
-module.exports = { registerUser, loginUser, getServices, getOrders }; // Ensure all functions are exported
+const getAvailableQueueNumbers = (req, res) => {
+    const { date } = req.query;
+
+    if (!date) {
+        return res.status(400).json({ message: 'Tanggal harus disediakan.' });
+    }
+
+    const sql = 'SELECT queue_number FROM orders WHERE DATE(order_date) = ?';
+    db.query(sql, [date], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error', details: err });
+        }
+
+        const takenNumbers = results.map(row => row.queue_number);
+        const allNumbers = [1, 2, 3, 4, 5];
+        const availableNumbers = allNumbers.filter(num => !takenNumbers.includes(num));
+
+        res.status(200).json({ availableNumbers });
+    });
+};
+
+
+const createOrder = (req, res) => {
+    const { user_id, service_id, date, time, motor, plate_number, complaint, queue_number } = req.body;
+
+    console.log('Creating order with data:', { user_id, service_id, date, time, motor, plate_number, complaint, queue_number }); // Log data received
+
+    const sql = 'INSERT INTO orders (user_id, service_id, order_date, motor, plate_number, complaint, queue_number) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const values = [user_id, service_id, new Date(`${date}T${time}`), motor, plate_number, complaint, queue_number];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error creating order', error: err });
+        }
+        res.status(201).json({ message: 'Order created successfully', orderId: result.insertId });
+    });
+};
+
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers }; // Ensure all functions are exported
