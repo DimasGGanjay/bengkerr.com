@@ -63,6 +63,29 @@ CREATE TABLE Chats (
     FOREIGN KEY (admin_id) REFERENCES Users(user_id)
 );
 
+CREATE TABLE mechanics (
+    mechanic_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE mechanic_presence (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    mechanic_id INT NOT NULL,
+    presence_date DATE NOT NULL,
+    status ENUM('present', 'absent') NOT NULL, -- 'present' or 'absent'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (mechanic_id) REFERENCES mechanics(mechanic_id) -- Relasi ke tabel mechanics
+);
+
+INSERT INTO mechanics (name, email, phone_number)
+VALUES ('John Doe', 'johndoe@example.com', '081234567890');
+ALTER TABLE mechanic_presence ADD CONSTRAINT unique_mechanic_date UNIQUE (mechanic_id, presence_date);
+
 
 
 

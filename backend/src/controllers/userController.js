@@ -169,4 +169,69 @@ const getUsers = (req, res) => {
     });
 };
 
-module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser }; // Ensure all functions are exported
+// Method to record mechanic's attendance
+const recordPresence = (req, res) => {
+    const presenceData = req.body;
+  
+    // Pastikan `presenceData` selalu berupa array
+    const dataArray = Array.isArray(presenceData) ? presenceData : [presenceData];
+  
+    const sql = `
+      INSERT INTO mechanic_presence (mechanic_id, presence_date, status)
+      VALUES ?
+      ON DUPLICATE KEY UPDATE status = VALUES(status)
+    `;
+  
+    const values = dataArray.map((data) => [
+      data.mechanic_id,
+      data.date,
+      data.status,
+    ]);
+  
+    db.query(sql, [values], (err) => {
+      if (err) {
+        console.error('Error saving presence data:', err);
+        return res.status(500).json({ message: 'Error saving presence data', error: err });
+      }
+      res.status(200).json({ message: 'Presence data saved successfully' });
+    });
+  };
+  
+// Method to fetch presence data
+const getPresenceData = (req, res) => {
+    const { date } = req.query;
+
+    const sql = `
+        SELECT mp.mechanic_id, m.name, mp.status 
+        FROM mechanic_presence mp
+        JOIN mechanics m ON mp.mechanic_id = m.mechanic_id
+        WHERE mp.presence_date = ?
+    `;
+    db.query(sql, [date], (err, results) => {
+        if (err) {
+            console.error('Error fetching presence data:', err);
+            return res.status(500).json({ message: 'Error fetching presence data', error: err });
+        }
+        res.status(200).json(results);
+    });
+};
+
+
+
+const getMechanics = (req, res) => {
+    const sql = 'SELECT * FROM mechanics'; // Query untuk mengambil data mekanik
+    console.log('Fetching mechanics data...');
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error fetching mechanics', error: err });
+        }
+
+        console.log('Fetched mechanics data:', results);
+        res.status(200).json(results); // Return hasil dalam bentuk JSON
+    });
+};
+
+
+
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics }; // Ensure all functions are exported
