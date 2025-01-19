@@ -146,7 +146,8 @@ function OrderPage() {
             </div>
 
             <div className="form-group">
-              <label>Nomor Antrian</label>
+              <label>Nomor Antrian Tersedia</label>
+              <p>jika tidak ada silahkan ganti tanggal</p>
               <select
                 value={selectedQueueNumber}
                 onChange={(e) => setSelectedQueueNumber(e.target.value)}

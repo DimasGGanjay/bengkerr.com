@@ -17,7 +17,8 @@ CREATE TABLE Services (
     title VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    duration INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE Orders (
@@ -25,6 +26,7 @@ CREATE TABLE Orders (
     user_id INT,
     service_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    image varchar(255),
     status ENUM('pending', 'completed', 'canceled') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (service_id) REFERENCES Services(service_id)
