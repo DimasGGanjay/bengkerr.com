@@ -13,6 +13,10 @@ const User = {
             callback(null, results[0]); // Return the first user found
         });
     },
+    delete: (userId, callback) => {
+        const sql = 'DELETE FROM Users WHERE user_id = ?';
+        db.query(sql, [userId], callback);
+    },
 };
 
 module.exports = User;

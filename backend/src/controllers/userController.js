@@ -1,5 +1,31 @@
 const db = require('../config/database'); // Pastikan koneksi database diimpor
 const User = require('../models/userModel');
+
+// Method to delete a user
+const deleteUser = (req, res) => {
+    const userId = req.params.id;
+
+    // Validasi userId
+    if (!userId || isNaN(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    User.delete(userId, (err, result) => {
+        if (err) {
+            console.error('Error deleting user:', err);
+            return res.status(500).json({ message: 'Error deleting user', error: err });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        return res.status(200).json({ message: 'User deleted successfully' });
+    });
+};
+
+
+
 const bcrypt = require('bcrypt'); // Ensure bcrypt is installed
 const jwt = require('jsonwebtoken'); // Ensure jsonwebtoken is installed
 
@@ -108,19 +134,39 @@ const getAvailableQueueNumbers = (req, res) => {
 
 
 const createOrder = (req, res) => {
-    const { user_id, service_id, date, time, motor, plate_number, complaint, queue_number } = req.body;
+    const { user_id, service_id, date, motor, plate_number, complaint, queue_number } = req.body;
 
-    console.log('Creating order with data:', { user_id, service_id, date, time, motor, plate_number, complaint, queue_number }); // Log data received
+    console.log('Creating order with data:', { user_id, service_id, date, motor, plate_number, complaint, queue_number });
 
-    const sql = 'INSERT INTO orders (user_id, service_id, order_date, motor, plate_number, complaint, queue_number) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const values = [user_id, service_id, new Date(`${date}T${time}`), motor, plate_number, complaint, queue_number];
+    const sql = `
+        INSERT INTO orders 
+        (user_id, service_id, order_date, motor, plate_number, complaint, queue_number) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [user_id, service_id, date, motor, plate_number, complaint, queue_number];
 
     db.query(sql, values, (err, result) => {
         if (err) {
+            console.error('Error creating order:', err);
             return res.status(500).json({ message: 'Error creating order', error: err });
         }
         res.status(201).json({ message: 'Order created successfully', orderId: result.insertId });
     });
 };
 
-module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers }; // Ensure all functions are exported
+
+const getUsers = (req, res) => {
+    const sql = 'SELECT * FROM users WHERE role = "user";'; // Query to fetch users with role 'user'
+    console.log('Fetching users data...');
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error fetching users', error: err });
+        }
+
+        console.log('Fetched users data:', results);
+        res.status(200).json(results); // Return results as JSON
+    });
+};
+
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser }; // Ensure all functions are exported

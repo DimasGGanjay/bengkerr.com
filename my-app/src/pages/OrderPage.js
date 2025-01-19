@@ -110,8 +110,8 @@ function OrderPage() {
             <div className="form-group2">
               <label>Tgl</label>
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-              <label>Jam</label>
-              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+              {/* <label>Jam</label>
+              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} /> */}
             </div>
 
             <div className="form-group">
