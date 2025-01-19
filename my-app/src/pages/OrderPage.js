@@ -18,8 +18,8 @@ function OrderPage() {
     try {
       const response = await fetch(`http://localhost:5000/api/orders/available-queues?date=${selectedDate}`);
       const data = await response.json();
-      console.log('Fetched queue numbers:', data); // Log the fetched data
-      setQueueNumber(data); // Simpan angka antrian yang tersedia
+      console.log('Fetched queue numbers:', data); // Debugging log
+      setQueueNumber(data.availableNumbers || []); // Simpan hanya angka antrian yang tersedia
     } catch (error) {
       console.error('Error fetching queue numbers:', error);
     }
@@ -85,7 +85,7 @@ function OrderPage() {
       <h1>Form Booking Service</h1>
       <div className="order-content">
         <div className="service-image-placeholder">
-           <img src="../assets/main_banner.png" alt="Deskripsi gambar" />
+          <img src="../assets/main_banner.png" alt="Deskripsi gambar" />
         </div>
 
         <div className="booking-form1">
@@ -128,27 +128,42 @@ function OrderPage() {
                 <option value="other">Merk Lainnya</option>
               </select>
               <label>Nomor Plat</label>
-              <input type="text" placeholder="Masukkan Nomor Plat" value={plateNumber} onChange={(e) => setPlateNumber(e.target.value)} />
+              <input
+                type="text"
+                placeholder="Masukkan Nomor Plat"
+                value={plateNumber}
+                onChange={(e) => setPlateNumber(e.target.value)}
+              />
             </div>
 
             <div className="form-group">
               <label>Keluhan</label>
-              <textarea placeholder="Masukkan Keluhan" value={complaint} onChange={(e) => setComplaint(e.target.value)}></textarea>
+              <textarea
+                placeholder="Masukkan Keluhan"
+                value={complaint}
+                onChange={(e) => setComplaint(e.target.value)}
+              ></textarea>
             </div>
 
             <div className="form-group">
               <label>Nomor Antrian</label>
-              <select value={selectedQueueNumber} onChange={(e) => setSelectedQueueNumber(e.target.value)}>
+              <select
+                value={selectedQueueNumber}
+                onChange={(e) => setSelectedQueueNumber(e.target.value)}
+              >
                 <option value="">Pilih Nomor Antrian</option>
-                {queueNumber.map(queue => (
-                  <option key={queue} value={queue}>
-                    {queue}
-                  </option>
-                ))}
+                {Array.isArray(queueNumber) &&
+                  queueNumber.map(queue => (
+                    <option key={queue} value={queue}>
+                      {queue}
+                    </option>
+                  ))}
               </select>
             </div>
 
-            <button type="submit" className="booking-button">Order</button>
+            <button type="submit" className="booking-button">
+              Order
+            </button>
           </form>
         </div>
       </div>
