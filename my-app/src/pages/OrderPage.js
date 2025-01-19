@@ -7,7 +7,6 @@ function OrderPage() {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState('');
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
   const [motor, setMotor] = useState('');
   const [plateNumber, setPlateNumber] = useState('');
   const [complaint, setComplaint] = useState('');
@@ -50,11 +49,64 @@ function OrderPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validasi input
+    if (
+      !selectedService ||
+      !date ||
+      !motor ||
+      !plateNumber ||
+      !complaint ||
+      !selectedQueueNumber
+    ) {
+      alert('Semua form wajib diisi!');
+      return;
+    }
+
+    // Tentukan jam berdasarkan nomor antrian
+    let time = '';
+    switch (selectedQueueNumber) {
+      case '1':
+        time = '08:00';
+        break;
+      case '2':
+        time = '10:00';
+        break;
+      case '3':
+        time = '13:00';
+        break;
+      case '4':
+        time = '15:00';
+        break;
+      case '5':
+        time = '17:00';
+        break;
+      default:
+        alert('Nomor antrian tidak valid!');
+        return;
+    }
+
+    const isConfirmed = window.confirm(`
+      Apakah Anda yakin dengan data berikut?
+      - Nama: ${username}
+      - No Telp: ${phone}
+      - Layanan: ${services.find(service => service.service_id === selectedService)?.title || ''}
+      - Tanggal: ${date}
+      - Waktu: ${time}
+      - Motor: ${motor}
+      - Nomor Plat: ${plateNumber}
+      - Keluhan: ${complaint}
+      - Nomor Antrian: ${selectedQueueNumber}
+    `);
+
+    if (!isConfirmed) {
+      return; // Jika tidak yakin, batalkan proses
+    }
+
     const orderData = {
       user_id: JSON.parse(localStorage.getItem('user')).userId,
       service_id: selectedService,
-      date,
-      time,
+      date: `${date}T${time}`,
       motor,
       plate_number: plateNumber,
       complaint,
@@ -110,8 +162,6 @@ function OrderPage() {
             <div className="form-group2">
               <label>Tgl</label>
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-              {/* <label>Jam</label>
-              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} /> */}
             </div>
 
             <div className="form-group">
