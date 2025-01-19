@@ -57,3 +57,33 @@ CREATE TABLE Chats (
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (admin_id) REFERENCES Users(user_id)
 );
+
+use bengkerr;
+
+
+ALTER TABLE services MODIFY image VARCHAR(255);
+
+INSERT INTO services (title, price, description, created_at, image)
+VALUES
+('Haircut', 50000.00, 'Basic haircut for men and women', NOW(), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHjj2b_zUDAc2eN_nGiCqF45GS6-ZCtMQceQ&s'),
+('Hair Wash', 20000.00, 'Hair wash service', NOW(), 'https://cdn0-production-images-kly.akamaized.net/t9MaUEl3m8OscZ0VyVQEbELCza4=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1626211/original/018798800_1497611622-Bengkel-Motor-Kebanjiran-Order4.jpg')
+;
+ALTER TABLE orders
+ADD COLUMN `motor` VARCHAR(100) NOT NULL AFTER `service_id`, -- Merek motor
+ADD COLUMN `plate_number` VARCHAR(50) NOT NULL AFTER `motor`, -- Nomor plat kendaraan
+ADD COLUMN `complaint` TEXT AFTER `status`; -- Keluhan pelanggan
+
+ALTER TABLE orders
+ADD COLUMN `queue_number` INT(11) NOT NULL AFTER `order_date`;
+
+INSERT INTO orders (`user_id`, `service_id`, `order_date`, `status`, `motor`, `plate_number`, `complaint`, `queue_number`)
+VALUES (
+    1, 
+    9, 
+    '2025-01-20 10:00:00', 
+    'pending', 
+    'Honda Vario', 
+    'AB1234CD', 
+    'Mesin berbunyi keras',
+    '1'
+);
