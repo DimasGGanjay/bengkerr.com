@@ -12,7 +12,7 @@
 .order-container h1 {
   text-align: center; /* Pusatkan judul */
   color: #d1d1d1; /* Warna judul form */
-  color: ; /* Warna judul */
+
   font-size: 24px; /* Ukuran font judul */
   margin-bottom: 20px; /* Jarak bawah judul */
 }
@@ -68,7 +68,6 @@
   flex: 1; /* Lebar label */
   font-weight: bold; /* Tebalkan font label */
   color: #d1d1d1; /* Warna judul form */
-  color: ; /* Warna label */
 }
 .form-group2 {
   display: flex; /* Gunakan flexbox untuk layout form */
@@ -83,7 +82,6 @@
   flex: 1; /* Lebar label */
   font-weight: bold; /* Tebalkan font label */
   color: #d1d1d1; /* Warna judul form */
-  color: ; /* Warna label */
 }
 
 
