@@ -1,5 +1,6 @@
 const db = require('../config/database'); // Pastikan koneksi database diimpor
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken'); // Ensure jsonwebtoken is installed
 
 // Method to delete a user
 const deleteUser = (req, res) => {
@@ -24,26 +25,14 @@ const deleteUser = (req, res) => {
     });
 };
 
-
-
-const bcrypt = require('bcrypt'); // Ensure bcrypt is installed
-const jwt = require('jsonwebtoken'); // Ensure jsonwebtoken is installed
-
 const registerUser = (req, res) => {
     const { username, email, phone, password } = req.body;
 
-    // Hash the password before saving
-    bcrypt.hash(password, 10, (err, hash) => {
+    User.create({ username, email, phone, password }, (err, result) => {
         if (err) {
-            return res.status(500).json({ message: 'Error hashing password', error: err });
+            return res.status(500).json({ message: 'Error registering user', error: err });
         }
-
-        User.create({ username, email, phone, password: hash }, (err, result) => {
-            if (err) {
-                return res.status(500).json({ message: 'Error registering user', error: err });
-            }
-            res.status(201).json({ message: 'Pendaftaran berhasil,\ntunggu sesaat anda akan di arahkan ke halaman Login', userId: result.insertId });
-        });
+        res.status(201).json({ message: 'Pendaftaran berhasil,\ntunggu sesaat anda akan di arahkan ke halaman Login', userId: result.insertId });
     });
 };
 
@@ -55,25 +44,19 @@ const loginUser = (req, res) => {
         if (err) {
             return res.status(500).json({ message: 'Error logging in', error: err });
         }
-        if (!user) {
+        if (!user || user.password !== password) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        // Compare the password with the hashed password in the database
-        bcrypt.compare(password, user.password, (err, isMatch) => {
-            if (err || !isMatch) {
-                return res.status(401).json({ message: 'Invalid email or password' });
-            }
-            // Generate JWT token
-            const token = jwt.sign({ userId: user.user_id, role: user.role }, 'your-secret-key', { expiresIn: '1h' });
-            // Include token, username, and user role in the response
-            res.status(200).json({ message: 'Login Berhasil,\ntunggu sesaat anda akan dilihkan ke Dashboard', token, userId: user.user_id, username: user.username, phone: user.phone, role: user.role });
-        });
+        // Generate JWT token
+        const token = jwt.sign({ userId: user.user_id, role: user.role }, 'your-secret-key', { expiresIn: '1h' });
+        // Include token, username, and user role in the response
+        res.status(200).json({ message: 'Login Berhasil,\ntunggu sesaat anda akan dilihkan ke Dashboard', token, userId: user.user_id, username: user.username, phone: user.phone, role: user.role });
     });
 };
 
 const getServices = (req, res) => {
-    const sql = 'SELECT service_id, title, price, duration, image FROM services'; // Tambahkan service_id
+    const sql = 'SELECT service_id, title, price, duration, image FROM services';
     console.log('Fetching services data...');
 
     db.query(sql, (err, results) => {
@@ -85,20 +68,20 @@ const getServices = (req, res) => {
 
         // Format results
         const formattedResults = results.map(service => ({
-            service_id: service.service_id, // Pastikan service_id ada di sini
+            service_id: service.service_id,
             title: service.title || 'Unknown Title',
             price: service.price || 0,
             duration: service.duration || 0,
-            image: service.image || null, // Directly use the image path
+            image: service.image || null
         }));
 
         console.log('Formatted results:', formattedResults);
-        res.status(200).json(formattedResults); // Return results as JSON
+        res.status(200).json(formattedResults);
     });
 };
 
 const getOrders = (req, res) => {
-    const sql = 'SELECT queue_number, plate_number, order_date FROM orders'; // Query to fetch required fields
+    const sql = 'SELECT queue_number, plate_number, order_date FROM orders';
     console.log('Fetching orders data...');
 
     db.query(sql, (err, results) => {
@@ -107,7 +90,7 @@ const getOrders = (req, res) => {
         }
 
         console.log('Fetched orders data:', results);
-        res.status(200).json(results); // Return results as JSON
+        res.status(200).json(results);
     });
 };
 
@@ -132,7 +115,6 @@ const getAvailableQueueNumbers = (req, res) => {
     });
 };
 
-
 const createOrder = (req, res) => {
     const { user_id, service_id, date, motor, plate_number, complaint, queue_number } = req.body;
 
@@ -154,9 +136,8 @@ const createOrder = (req, res) => {
     });
 };
 
-
 const getUsers = (req, res) => {
-    const sql = 'SELECT * FROM users WHERE role = "user";'; // Query to fetch users with role 'user'
+    const sql = 'SELECT * FROM users WHERE role = "user";';
     console.log('Fetching users data...');
 
     db.query(sql, (err, results) => {
@@ -165,39 +146,36 @@ const getUsers = (req, res) => {
         }
 
         console.log('Fetched users data:', results);
-        res.status(200).json(results); // Return results as JSON
+        res.status(200).json(results);
     });
 };
 
-// Method to record mechanic's attendance
 const recordPresence = (req, res) => {
     const presenceData = req.body;
-  
-    // Pastikan `presenceData` selalu berupa array
+
     const dataArray = Array.isArray(presenceData) ? presenceData : [presenceData];
-  
+
     const sql = `
-      INSERT INTO mechanic_presence (mechanic_id, presence_date, status)
-      VALUES ?
-      ON DUPLICATE KEY UPDATE status = VALUES(status)
+        INSERT INTO mechanic_presence (mechanic_id, presence_date, status)
+        VALUES ?
+        ON DUPLICATE KEY UPDATE status = VALUES(status)
     `;
-  
+
     const values = dataArray.map((data) => [
-      data.mechanic_id,
-      data.date,
-      data.status,
+        data.mechanic_id,
+        data.date,
+        data.status
     ]);
-  
+
     db.query(sql, [values], (err) => {
-      if (err) {
-        console.error('Error saving presence data:', err);
-        return res.status(500).json({ message: 'Error saving presence data', error: err });
-      }
-      res.status(200).json({ message: 'Presence data saved successfully' });
+        if (err) {
+            console.error('Error saving presence data:', err);
+            return res.status(500).json({ message: 'Error saving presence data', error: err });
+        }
+        res.status(200).json({ message: 'Presence data saved successfully' });
     });
-  };
-  
-// Method to fetch presence data
+};
+
 const getPresenceData = (req, res) => {
     const { date } = req.query;
 
@@ -216,10 +194,8 @@ const getPresenceData = (req, res) => {
     });
 };
 
-
-
 const getMechanics = (req, res) => {
-    const sql = 'SELECT * FROM mechanics'; // Query untuk mengambil data mekanik
+    const sql = 'SELECT * FROM mechanics';
     console.log('Fetching mechanics data...');
 
     db.query(sql, (err, results) => {
@@ -228,10 +204,8 @@ const getMechanics = (req, res) => {
         }
 
         console.log('Fetched mechanics data:', results);
-        res.status(200).json(results); // Return hasil dalam bentuk JSON
+        res.status(200).json(results);
     });
 };
 
-
-
-module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics }; // Ensure all functions are exported
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics };

@@ -24,16 +24,24 @@
 }
 
 /* Left side - Image placeholder */
-.service-image-placeholder {
-  width: 50%; /* Lebar gambar */
-  height: 400px; /* Tinggi gambar */
-  border: 2px solid #aaa; /* Border gambar */
+.service-image-placeholder{
+  width: 400px; /* Lebar gambar */
+  height: 500px; /* Tinggi gambar */
+  border-radius: 20px;
+  border: 3px solid #ff0000;
+  border-image: linear-gradient(to top, #00000000, #ff0000) 2;
+
   display: flex; /* Gunakan flexbox untuk pusatkan konten */
   align-items: center; /* Pusatkan secara vertikal */
   justify-content: center; /* Pusatkan secara horizontal */
   font-size: 18px; /* Ukuran font untuk placeholder */
   color: #aaa; /* Warna teks untuk placeholder */
+  overflow: hidden ;
+  object-fit: cover;
+  opacity: 80%;
 }
+
+
 
 /* Right side - Form */
 .booking-form1 {
@@ -131,7 +139,6 @@
       flex-direction: column; /* Ubah menjadi kolom pada layar kecil */
   }
 
-  .service-image-placeholder,
   .booking-form1 {
       width: 100%; /* Lebar penuh pada layar kecil */
   }
