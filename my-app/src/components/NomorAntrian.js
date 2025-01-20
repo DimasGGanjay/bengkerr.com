@@ -52,12 +52,12 @@ const NomorAntrian = () => {
     }
 
     return (
-        <div>
-            <h2>Nomor Antrian</h2>
+        <div className='nomor-antrian-container'>
+            <h2>Nomor Antrian Aktif</h2>
             {nomorAntrian ? (
-                <div>
-                    <p>Nomor Antrian: {nomorAntrian.queue_number}</p>
-                    <p>Tanggal Pesanan: {nomorAntrian.order_date}</p>
+                <div className='nomor-antrian'>
+                    <h1>{nomorAntrian.queue_number}</h1>
+                    <h3>Tanggal: {new Date(nomorAntrian.order_date).toLocaleDateString('id-ID')}</h3>
                     <p>Status: {nomorAntrian.status}</p>
                 </div>
             ) : (

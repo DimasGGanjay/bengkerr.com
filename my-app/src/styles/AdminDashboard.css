@@ -158,3 +158,22 @@ body {
   background-color: #0056b3;
 }
 
+.nomor-antrian-container {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+
+}
+.nomor-antrian-container h1 {
+  font-size:150px;
+  margin-top: 30px;
+}
+.nomor-antrian-container h3 {
+  font-size: 30px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: ;
+}
+
