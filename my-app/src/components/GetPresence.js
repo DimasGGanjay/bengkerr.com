@@ -31,9 +31,9 @@ const GetPresence = () => {
   }, [filterDate]);
 
   return (
-    <div className="get-presence-container">
+    <div className="presensi-container">
       <h3>Hasil Presensi Mekanik</h3>
-      <div className="date-filter">
+      <div className="date-selector">
         <label htmlFor="filter-date">Tanggal: </label>
         <input
           type="date"
@@ -49,7 +49,7 @@ const GetPresence = () => {
           <thead>
             <tr>
               <th>Nama Mekanik</th>
-              <th>Nomor Mekanik</th>
+              <th>Id Mekanik</th>
               <th>Status</th>
             </tr>
           </thead>

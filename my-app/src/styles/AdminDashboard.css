@@ -23,6 +23,26 @@ body {
   overflow-y: auto;
 }
 
+.content-admin-management{
+  display: flex;
+  padding: 20px;
+  align-content: flex-end;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  margin: 40px;
+  flex-direction: column;
+  border-color: #ff0000;
+  
+}
+
+.date{
+  padding-top: 20px;
+  margin: 9px;
+
+}
+
+
 .dashboard-panel {
   display: flex; /* Mengubah menjadi flex untuk menampilkan Chat dan Notifikasi berdampingan */
   gap: 20px; /* Jarak antara Chat dan Notifikasi */

@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="app">
       <Sidebar />
-      <div className="content">
+      <div className="content-admin-management">
         {/* <Chat /> */}
         <Presensi />
         <GetPresensi />
