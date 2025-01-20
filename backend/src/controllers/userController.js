@@ -81,7 +81,7 @@ const getServices = (req, res) => {
 };
 
 const getOrders = (req, res) => {
-    const sql = 'SELECT user_id, queue_number, plate_number, order_date FROM orders';
+    const sql = 'SELECT user_id, order_id, queue_number, plate_number, order_date, status FROM orders';
     console.log('Fetching orders data...');
 
     db.query(sql, (err, results) => {
@@ -271,4 +271,36 @@ const getUserQueue = (req, res) => {
 };
 
 
-module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics, getUserQueue };
+const updateOrderStatus = (req, res) => {
+    const { orderId } = req.params;
+
+    // Validasi orderId
+    if (!orderId || isNaN(orderId)) {
+        return res.status(400).json({ message: 'Invalid order ID' });
+    }
+
+    // Query untuk mengupdate status order
+    const updateSql = `
+        UPDATE orders 
+        SET status = 'completed'
+        WHERE order_id = ?
+    `;
+
+    db.query(updateSql, [orderId], (err, result) => {
+        if (err) {
+            console.error('Error updating order status:', err);
+            return res.status(500).json({ message: 'Error updating order status', error: err });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Order not found or already completed' });
+        }
+
+        res.status(200).json({ message: 'Order status updated to completed successfully' });
+    });
+};
+
+// Backend - Contoh di Express.js
+
+
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics, getUserQueue, updateOrderStatus };

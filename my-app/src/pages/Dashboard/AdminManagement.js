@@ -2,8 +2,7 @@ import React from 'react';
 import Sidebar from '../../components/Sidebar';
 import Presensi from '../../components/Presensi';
 import GetPresensi from '../../components/GetPresence';
-// import Management from '../../components/Management';
-// import Statistics from '../../components/Statistics';
+import UpdateAntrian from '../../components/UpdateAntrian';// import Statistics from '../../components/Statistics';
 import '../../styles/AdminDashboard.css';
 
 function App() {
@@ -14,6 +13,8 @@ function App() {
         {/* <Chat /> */}
         <Presensi />
         <GetPresensi />
+        <UpdateAntrian />
+
         {/* <Statistics /> */}
       </div>
     </div>

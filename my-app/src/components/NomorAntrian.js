@@ -32,7 +32,13 @@ const NomorAntrian = () => {
                     throw new Error(`Error: ${message}`);
                 }
                 const data = await response.json();
-                setNomorAntrian(data);
+
+                // Cek apakah data ada dan statusnya bukan "completed"
+                if (!data || data.status === 'completed') {
+                    setNomorAntrian(null);
+                } else {
+                    setNomorAntrian(data);
+                }
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -61,7 +67,7 @@ const NomorAntrian = () => {
                     <p>Status: {nomorAntrian.status}</p>
                 </div>
             ) : (
-                <p>Anda belum memiliki nomor antrian.</p>
+                <p>Anda tidak dalam antrian.</p>
             )}
         </div>
     );
