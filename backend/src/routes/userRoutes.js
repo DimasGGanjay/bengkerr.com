@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics } = require('../controllers/userController');
+const { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics, getUserQueue } = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -16,6 +16,8 @@ router.post('/mechanic-presence', recordPresence);
 // Route to get mechanic presence data for a specific date
 router.get('/presences', getPresenceData);
 router.get('/mechanics', getMechanics); // Rute baru untuk mengambil data mekanik
+router.get('/orders/queue/:id', getUserQueue);
+
 
 
 module.exports = router;

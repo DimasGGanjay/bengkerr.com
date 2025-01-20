@@ -17,6 +17,7 @@ function App() {
 
               {/* <Management /> */}
               <Statistics />
+            
     </div>
     <div className='hero-button'>
      <a href="/">

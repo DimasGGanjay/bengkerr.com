@@ -1,5 +1,6 @@
 import React from 'react';
 import SidebarUser from '../../components/SidebarUser';
+import NomorAntrian from '../../components/NomorAntrian';
 
 import '../../styles/UserDashboard.css';
 
@@ -8,13 +9,14 @@ const DashboardUser = () => {
     <div className="dashboard-user">
       {/* Sidebar remains separate */}
       <SidebarUser />
+      
 
       {/* Main content container */}
       <div className="dashboard-content">
         <div className="queue-info">
           <h3>Nomor Antrian dan Detail Layanan</h3>
           {/* Queue details here */}
-          <div className="queue-item">Queue Item</div>
+          <NomorAntrian />
         </div>
 
         <div className="notifications">

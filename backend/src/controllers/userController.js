@@ -81,7 +81,7 @@ const getServices = (req, res) => {
 };
 
 const getOrders = (req, res) => {
-    const sql = 'SELECT queue_number, plate_number, order_date FROM orders';
+    const sql = 'SELECT user_id, queue_number, plate_number, order_date FROM orders';
     console.log('Fetching orders data...');
 
     db.query(sql, (err, results) => {
@@ -120,21 +120,44 @@ const createOrder = (req, res) => {
 
     console.log('Creating order with data:', { user_id, service_id, date, motor, plate_number, complaint, queue_number });
 
-    const sql = `
-        INSERT INTO orders 
-        (user_id, service_id, order_date, motor, plate_number, complaint, queue_number) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+    // Cek apakah ada order dengan status pending
+    const checkPendingOrderSql = `
+        SELECT COUNT(*) AS pendingCount 
+        FROM orders 
+        WHERE user_id = ? AND status = 'pending'
     `;
-    const values = [user_id, service_id, date, motor, plate_number, complaint, queue_number];
-
-    db.query(sql, values, (err, result) => {
+    db.query(checkPendingOrderSql, [user_id], (err, result) => {
         if (err) {
-            console.error('Error creating order:', err);
-            return res.status(500).json({ message: 'Error creating order', error: err });
+            console.error('Error checking pending orders:', err);
+            return res.status(500).json({ message: 'Error checking pending orders', error: err });
         }
-        res.status(201).json({ message: 'Order created successfully', orderId: result.insertId });
+
+        const pendingCount = result[0].pendingCount;
+        if (pendingCount > 0) {
+            return res.status(400).json({
+                message: 'You already have a pending order. Please complete or cancel it before creating a new one.',
+            });
+        }
+
+        // Jika tidak ada order pending, lanjutkan membuat order baru
+        const createOrderSql = `
+            INSERT INTO orders 
+            (user_id, service_id, order_date, motor, plate_number, complaint, queue_number) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
+        const values = [user_id, service_id, date, motor, plate_number, complaint, queue_number];
+
+        db.query(createOrderSql, values, (err, result) => {
+            if (err) {
+                console.error('Error creating order:', err);
+                return res.status(500).json({ message: 'Error creating order', error: err });
+            }
+
+            res.status(201).json({ message: 'Order created successfully', orderId: result.insertId });
+        });
     });
 };
+
 
 const getUsers = (req, res) => {
     const sql = 'SELECT * FROM users WHERE role = "user";';
@@ -208,4 +231,44 @@ const getMechanics = (req, res) => {
     });
 };
 
-module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics };
+const getUserQueue = (req, res) => {
+    const userId = req.params.id;
+
+    // Validasi userId
+    if (!userId || isNaN(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    const sql = `
+        SELECT 
+            queue_number, 
+            DATE(order_date) AS order_date, 
+            status
+        FROM orders 
+        WHERE user_id = ?
+        ORDER BY order_date DESC
+        LIMIT 1
+    `;
+
+    db.query(sql, [userId], (err, results) => {
+        if (err) {
+            console.error('Error fetching user queue:', err);
+            return res.status(500).json({ message: 'Error fetching user queue', error: err });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'No queue found for this user.' });
+        }
+
+        // Format hasil untuk memastikan konsistensi
+        const { queue_number, order_date, status } = results[0];
+        res.status(200).json({
+            queue_number: queue_number || null,
+            order_date: order_date || 'Unknown Date',
+            status: status || 'Unknown Status'
+        });
+    });
+};
+
+
+module.exports = { registerUser, loginUser, getServices, getOrders, createOrder, getAvailableQueueNumbers, getUsers, deleteUser, recordPresence, getPresenceData, getMechanics, getUserQueue };
